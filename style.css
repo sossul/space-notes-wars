@@ -19,11 +19,18 @@ body {
    fijo + un solo media query por ancho, el frame se ajusta para caber
    ENTERO en la pantalla sea cual sea su forma (celular vertical, horizontal,
    tablet, notebook): nunca se recorta el teclado de piano de abajo ni hace
-   falta hacer scroll para verlo. */
+   falta hacer scroll para verlo.
+   Se usa dvh/dvw (altura/ancho de viewport "dinamico") en vez de vh/vw:
+   en Safari de iPhone, 100vh incluye el espacio de la barra de direcciones
+   aunque este oculta, lo que hace que el juego se calcule mas alto de lo
+   que realmente se ve y el teclado quede cortado. dvh se ajusta al tamano
+   real visible. Se deja vh/vw como respaldo para navegadores viejos. */
 #frame {
   position: relative;
   width: min(960px, 100vw, calc(100vh * 960 / 600));
   height: min(600px, 100vh, calc(100vw * 600 / 960));
+  width: min(960px, 100dvw, calc(100dvh * 960 / 600));
+  height: min(600px, 100dvh, calc(100dvw * 600 / 960));
   background: #000;
   overflow: hidden;
   box-shadow: 0 0 40px rgba(80, 160, 255, 0.25);

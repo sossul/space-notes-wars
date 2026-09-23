@@ -1,6 +1,8 @@
 # 🎮 Space Notes Wars
 
-**[▶ Jugar en GitHub Pages](https://sossul.github.io/space-notes-wars/)**
+**[▶ Jugar (PC)](https://sossul.github.io/space-notes-wars/)** · **[📱 Jugar (Mobile)](https://sossul.github.io/space-notes-wars/mobile.html)**
+
+> La versión Mobile viene con un tamaño fijo pensado para celular en **horizontal** (estilo iPhone), así se ve completa de entrada sin depender de que el navegador calcule bien el alto disponible.
 
 Un shooter arcade estilo *Space Invaders* para practicar lectura de partituras: cada nave enemiga es una nota musical ubicada en su posición real del pentagrama, y hay que identificarla y "dispararle" antes de que llegue a tu base.
 

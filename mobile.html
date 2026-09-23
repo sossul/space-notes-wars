@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Space Notes Wars (Mobile)</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Version movil: tamano FIJO pensado para un iPhone en horizontal, en vez
+     de calcularse con unidades de viewport (que en algunos navegadores de
+     celular, sobre todo Safari de iPhone, pueden calcular mal el alto
+     disponible por la barra de direcciones). Con un tamano fijo el juego
+     siempre se ve completo -incluido el teclado de piano- sin depender de
+     esos calculos. Cabe comodo incluso en el iPhone mas chico en horizontal. */
+  html, body { overflow: auto; }
+  #frame {
+    width: 560px !important;
+    height: 350px !important;
+  }
+</style>
+</head>
+<body>
+<div id="frame">
+  <canvas id="game" width="960" height="600"></canvas>
+
+  <div id="hud">
+    <div id="shields"></div>
+    <div id="scoreBox">
+      <div id="score">0</div>
+      <div id="levelLabel">Nivel 1</div>
+    </div>
+    <div id="hudBtns">
+      <button id="muteBtn" title="Silenciar sonido">🔊</button>
+      <button id="restartBtn" title="Reiniciar nivel">⟲</button>
+      <button id="pauseBtn" title="Pausa">❙❙</button>
+    </div>
+  </div>
+
+  <div id="progressWrap">
+    <div id="progressBar"><div id="progressFill"></div></div>
+    <div id="timeLabel">⏱ 0:00</div>
+    <div id="distanceLabel">🚀 0 km</div>
+  </div>
+
+  <div id="pianoBar"></div>
+
+  <!-- Paso 1: elegir modo -->
+  <div id="modeScreen" class="screen">
+    <div class="panel wide">
+      <h1>SPACE NOTES WARS</h1>
+      <p>Lee la nota en el pentagrama y presiona la tecla correcta antes de que la nave enemiga llegue a tu base.</p>
+      <button id="muteBtnMenu" class="soundToggle">🔊 Sonido activado</button>
+      <div class="modeGrid">
+        <button id="modeClassicBtn" class="modeCard">
+          <div class="modeTitle">🎯 CLÁSICO</div>
+          <div class="modeDesc">Niveles fijos. Vas sumando notas de a poco, a tu ritmo.</div>
+        </button>
+        <button id="modeArcadeBtn" class="modeCard">
+          <div class="modeTitle">⚡ ARCADE</div>
+          <div class="modeDesc">Estilo "piano tiles": la velocidad sube sola con el tiempo. Elige tu dificultad.</div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paso 2a: clasico -> elegir clave + nivel -->
+  <div id="overlay" class="screen hidden">
+    <div class="panel wide">
+      <button class="backBtn" id="backFromClassicBtn">← Modo</button>
+      <h1>MODO CLÁSICO</h1>
+      <div id="clefSelectClassic" class="clefSelect"></div>
+      <p class="keys-help">Elige un nivel para empezar:</p>
+      <div id="levelGrid" class="cardGrid"></div>
+    </div>
+  </div>
+
+  <!-- Paso 2b: arcade -> elegir clave + dificultad -->
+  <div id="arcadeScreen" class="screen hidden">
+    <div class="panel wide">
+      <button class="backBtn" id="backFromArcadeBtn">← Modo</button>
+      <h1>MODO ARCADE</h1>
+      <div id="clefSelectArcade" class="clefSelect"></div>
+      <p class="keys-help">Elige tu dificultad (¡la velocidad nunca deja de subir!):</p>
+      <div id="arcadeGrid" class="cardGrid"></div>
+    </div>
+  </div>
+
+  <div id="levelUpToast" class="toast hidden">¡Nivel superado!</div>
+
+  <div id="gameOverScreen" class="screen hidden">
+    <div class="panel">
+      <h1>GAME OVER</h1>
+      <p id="finalScore"></p>
+      <div class="btnRow">
+        <button id="retryBtn" class="bigBtn">REINTENTAR</button>
+        <button id="menuFromGameOverBtn" class="bigBtn secondary">ELEGIR OTRO</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="pauseScreen" class="screen hidden">
+    <div class="panel">
+      <h1>PAUSA</h1>
+      <div class="btnRow">
+        <button id="resumeBtn" class="bigBtn">CONTINUAR</button>
+        <button id="menuFromPauseBtn" class="bigBtn secondary">ELEGIR OTRO</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
