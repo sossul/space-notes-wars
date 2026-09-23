@@ -11,17 +11,23 @@
      celular, sobre todo Safari de iPhone, pueden calcular mal el alto
      disponible por la barra de direcciones). Con un tamano fijo el juego
      siempre se ve completo -incluido el teclado de piano- sin depender de
-     esos calculos. Cabe comodo incluso en el iPhone mas chico en horizontal. */
+     esos calculos. Cabe comodo incluso en el iPhone mas chico en horizontal.
+     La proporcion (no la resolucion: no hace falta tanto detalle para un
+     juego 2D simple) sigue la pantalla de un iPhone en horizontal, mas
+     ancha que la version PC (2796x1290 ~ 2.17:1, en vez de 1.6:1). Por eso
+     el canvas de aca abajo tambien es mas ancho (1300x600 en vez de
+     960x600): asi se aprovecha el ancho real del telefono en vez de dejar
+     franjas negras a los costados. */
   html, body { overflow: auto; }
   #frame {
-    width: 560px !important;
-    height: 350px !important;
+    width: 650px !important;
+    height: 300px !important;
   }
 </style>
 </head>
 <body>
 <div id="frame">
-  <canvas id="game" width="960" height="600"></canvas>
+  <canvas id="game" width="1300" height="600"></canvas>
 
   <div id="hud">
     <div id="shields"></div>
