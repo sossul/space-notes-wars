@@ -9,18 +9,24 @@ html, body {
   user-select: none;
 }
 
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* El juego tiene una proporcion fija de 960x600 (8:5). En vez de un ancho
+   fijo + un solo media query por ancho, el frame se ajusta para caber
+   ENTERO en la pantalla sea cual sea su forma (celular vertical, horizontal,
+   tablet, notebook): nunca se recorta el teclado de piano de abajo ni hace
+   falta hacer scroll para verlo. */
 #frame {
   position: relative;
-  width: 960px;
-  height: 600px;
-  margin: 0 auto;
+  width: min(960px, 100vw, calc(100vh * 960 / 600));
+  height: min(600px, 100vh, calc(100vw * 600 / 960));
   background: #000;
   overflow: hidden;
   box-shadow: 0 0 40px rgba(80, 160, 255, 0.25);
-}
-
-@media (max-width: 980px) {
-  #frame { width: 100vw; height: calc(100vw * 600 / 960); }
 }
 
 canvas {
