@@ -184,6 +184,10 @@ function updateMuteBtn() {
   btn.textContent = muted ? '🔇' : '🔊';
   btn.classList.toggle('isMuted', muted);
   btn.title = muted ? 'Activar sonido' : 'Silenciar sonido';
+
+  const menuBtn = document.getElementById('muteBtnMenu');
+  menuBtn.textContent = muted ? '🔇 Sonido desactivado' : '🔊 Sonido activado';
+  menuBtn.classList.toggle('isMuted', muted);
 }
 
 function pianoTone(freq) {
@@ -1158,6 +1162,7 @@ document.getElementById('restartBtn').addEventListener('click', () => {
 });
 document.getElementById('resumeBtn').addEventListener('click', togglePause);
 document.getElementById('muteBtn').addEventListener('click', toggleMute);
+document.getElementById('muteBtnMenu').addEventListener('click', toggleMute);
 updateMuteBtn();
 
 function togglePause() {
